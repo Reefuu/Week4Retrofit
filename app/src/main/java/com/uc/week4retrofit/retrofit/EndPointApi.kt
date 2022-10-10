@@ -13,4 +13,6 @@ interface EndPointApi {
         @Query("language") language: String,
         @Query("page") page: Int
     ): Response<NowPlaying>
+
+
 }
