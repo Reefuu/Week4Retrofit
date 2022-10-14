@@ -1,5 +1,6 @@
 package com.uc.week4retrofit.retrofit
 
+import com.uc.week4retrofit.model.Genre
 import com.uc.week4retrofit.model.MovieDetails
 import com.uc.week4retrofit.model.NowPlaying
 import com.uc.week4retrofit.view.MovieDetail
@@ -22,5 +23,6 @@ interface EndPointApi {
         @Path("movie_id")id:Int,
         @Query("api_key")apiKey: String
     ):Response<MovieDetails>
+
 
 }

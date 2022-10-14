@@ -1,5 +1,6 @@
 package com.uc.week4retrofit.adapter
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -11,29 +12,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.uc.week4retrofit.R
 import com.uc.week4retrofit.helper.Const
+import com.uc.week4retrofit.model.Genre
+import com.uc.week4retrofit.model.MovieDetails
+import com.uc.week4retrofit.model.ProductionCompany
 import com.uc.week4retrofit.model.Result
 import com.uc.week4retrofit.view.MovieDetail
 
-class NowPlayingAdapter(private val dataSet: ArrayList<Result>) :
-    RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
+class CompanyAdapter(private val dataSet: List<ProductionCompany>) :
+    RecyclerView.Adapter<CompanyAdapter.ViewHolder>() {
 
     /**
      * Provide a reference to the type of views that you are using
      * (custom ViewHolder).
      */
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val tvTitleNow: TextView
-        val tvReleased: TextView
-        val cvNowPlaying: CardView
-        val ivPoster: ImageView
+        val ivCompLogo: ImageView
 
 
         init {
             // Define click listener for the ViewHolder's View.
-            tvTitleNow = view.findViewById(R.id.tv_title_now_playing)
-            tvReleased = view.findViewById(R.id.tv_released_now_playing)
-            cvNowPlaying = view.findViewById(R.id.cv_now_playing)
-            ivPoster = view.findViewById(R.id.iv_poster_now_playing)
+            ivCompLogo = view.findViewById(R.id.iv_company_logo)
         }
     }
 
@@ -41,7 +39,7 @@ class NowPlayingAdapter(private val dataSet: ArrayList<Result>) :
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): ViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.card_now_playing, viewGroup, false)
+            .inflate(R.layout.card_company_logo, viewGroup, false)
 
         return ViewHolder(view)
     }
@@ -51,14 +49,8 @@ class NowPlayingAdapter(private val dataSet: ArrayList<Result>) :
 
         // Get element from your dataset at this position and replace the
         // contents of the view with that element
-        viewHolder.tvTitleNow.text = dataSet[position].title
-        viewHolder.tvReleased.text = dataSet[position].release_date
-        viewHolder.cvNowPlaying.setOnClickListener{
-            val intent = Intent(it.context, MovieDetail::class.java)
-            intent.putExtra("movie_id", dataSet[position].id)
-            it.context.startActivity(intent)
-        }
-        Glide.with(viewHolder.ivPoster.context).load(Const.IMG_URL+dataSet[position].poster_path).into(viewHolder.ivPoster)
+
+        Glide.with(viewHolder.ivCompLogo.context).load(Const.IMG_URL+dataSet[position].logo_path).into(viewHolder.ivCompLogo)
     }
 
     // Return the size of your dataset (invoked by the layout manager)

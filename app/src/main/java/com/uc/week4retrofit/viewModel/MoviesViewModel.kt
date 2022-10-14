@@ -1,10 +1,12 @@
 package com.uc.week4retrofit.viewModel
 
+import android.provider.MediaStore.Audio.Genres
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.uc.week4retrofit.model.Genre
 import com.uc.week4retrofit.model.MovieDetails
 import com.uc.week4retrofit.repository.MoviesRepository
 import dagger.hilt.android.lifecycle.HiltViewModel

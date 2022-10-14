@@ -12,4 +12,5 @@ class MoviesRepository @Inject constructor(
 
     suspend fun getMovieDetailsResults(movieId: Int, apiKey: String) =
         api.getMovieDetails(movieId, apiKey)
+
 }
