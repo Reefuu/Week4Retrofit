@@ -81,6 +81,7 @@ class MovieDetail : AppCompatActivity() {
                 text = response.overview
             }
 
+
         })
 
     }
